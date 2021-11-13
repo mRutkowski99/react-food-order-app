@@ -5,3 +5,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
 }
+
+.meals-list > *:not(:last-child) {
+  border-bottom: solid 1px #999;
+}

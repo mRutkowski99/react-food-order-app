@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./App.module.css";
 import MealList from "./components/Meals/MealsList/MealsList";
 import Header from "./components/UI/Header/Header";
 import SectionHero from "./components/UI/Section-hero/SectionHero";

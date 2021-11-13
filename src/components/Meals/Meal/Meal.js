@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Meal.module.css";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
+import OrderContext from "../../../store/order-context";
 
 const Meal = (props) => {
+  const orderCxt = useContext(OrderContext);
+
+  let enteredVal = 0;
+  const inputValHandler = (val) => {
+    enteredVal = val;
+  };
+
+  const addBtnHandler = () => {
+    orderCxt.onAdd({
+      name: props.mealName,
+      val: enteredVal,
+      price: props.mealPrice,
+    });
+  };
+
   return (
     <li className={styles.meal}>
       <div>
@@ -13,8 +29,8 @@ const Meal = (props) => {
       </div>
 
       <div>
-        <Input label="Amount" />
-        <Button>+Add</Button>
+        <Input getValue={inputValHandler} label="Amount" />
+        <Button onClick={addBtnHandler}>+Add</Button>
       </div>
     </li>
   );
