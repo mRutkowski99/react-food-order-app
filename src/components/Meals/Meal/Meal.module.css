@@ -1,0 +1,26 @@
+.meal {
+  padding: 1rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meal > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meal__name {
+  font-weight: bolder;
+}
+
+.meal__description {
+  font-style: italic;
+}
+
+.meal__price {
+  color: rgb(163, 58, 39);
+  font-weight: bolder;
+}

@@ -1,0 +1,14 @@
+.input {
+  display: flex;
+}
+
+.input label {
+  font-weight: bolder;
+  margin-right: 1rem;
+}
+
+.input input {
+  outline: none;
+  font-size: 1rem;
+  width: 2rem;
+}
