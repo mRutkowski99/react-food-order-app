@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 const OrderContext = React.createContext({
   onAdd: (data) => {},
   onRemove: () => {},
+  onCartOpen: () => {},
+  onCartClose: () => {},
   orders: {},
+  totalOrders: 0,
+  totalPrice: 0,
+  isCartShown: false,
 });
 
 export const OrderContextProvider = (props) => {
@@ -11,6 +16,7 @@ export const OrderContextProvider = (props) => {
   const [orders, setOrders] = useState({});
   const [totalOrders, setTotalOrders] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cartShown, setCartShown] = useState(false);
 
   //HANDLERS
   const addHandler = (data) => {
@@ -24,6 +30,14 @@ export const OrderContextProvider = (props) => {
 
   const removeHandler = () => {
     console.log(true);
+  };
+
+  const openCartHandler = () => {
+    setCartShown(true);
+  };
+
+  const closeCartHandler = () => {
+    setCartShown(false);
   };
 
   //EFFECT HOOKS
@@ -40,16 +54,17 @@ export const OrderContextProvider = (props) => {
     setTotalPrice(caclPrice);
   }, [orders]);
 
-  console.log(totalOrders, totalPrice);
-
   return (
     <OrderContext.Provider
       value={{
         onAdd: addHandler,
         onRemove: removeHandler,
+        onCartOpen: openCartHandler,
+        onCartClose: closeCartHandler,
         orders: orders,
         totalOrders: totalOrders,
         totalPrice: totalPrice,
+        isCartShown: cartShown,
       }}
     >
       {props.children}

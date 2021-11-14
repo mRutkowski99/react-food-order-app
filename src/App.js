@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import MealList from "./components/Meals/MealsList/MealsList";
 import Header from "./components/UI/Header/Header";
 import SectionHero from "./components/UI/Section-hero/SectionHero";
+import Cart from "./components/Cart/Cart/Cart";
+import OrderContext from "./store/order-context";
 
 const MEALS = [
   { name: "Sushi", description: "Finest fish and veggies", price: "$22.99" },
@@ -15,11 +17,16 @@ const MEALS = [
 ];
 
 function App() {
+  const orderCtx = useContext(OrderContext);
+
+  const { isCartShown } = orderCtx;
+
   return (
     <>
       <Header />
       <SectionHero />
       <MealList mealsArr={MEALS} />
+      {isCartShown && <Cart />}
     </>
   );
 }

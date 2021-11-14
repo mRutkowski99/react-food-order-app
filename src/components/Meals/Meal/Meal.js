@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./Meal.module.css";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
@@ -13,6 +13,8 @@ const Meal = (props) => {
   };
 
   const addBtnHandler = () => {
+    if (enteredVal === 0) return;
+
     orderCxt.onAdd({
       name: props.mealName,
       val: enteredVal,
